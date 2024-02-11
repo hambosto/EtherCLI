@@ -62,7 +62,7 @@ Before setting up the wallet, you can explore available commands and options usi
 
 - **Command Help:**
 ```bash
-python script.py --help
+python eth.py --help
 ```
 This will display a list of available commands and their descriptions.
 ```plaintext
@@ -88,20 +88,20 @@ If the wallet configuration file doesn't exist, use the following commands to se
 
 - **Create a New Wallet:**
 ```bash
-python script.py create --passphrase <your_passphrase> --password <your_password>
+python eth.py create --passphrase <your_passphrase> --password <your_password>
 ```
 This command creates a new Ethereum wallet. You'll be prompted to provide a passphrase and password for additional security.
 
 - **Restore Wallet from Mnemonic:**
 ```bash
-python script.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
+python eth.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
 
 ```
 If you have a mnemonic (recovery phrase) for an existing wallet, use this command to restore it. Replace word1, word2, etc., with your actual mnemonic words.
 
 - **Import Wallet from Private Key:**
 ```bash
-python script.py import --private-key 0xabcdef... --password <your_password>
+python eth.py import --private-key 0xabcdef... --password <your_password>
 ```
 Import an existing wallet using its private key. Replace 0xabcdef... with your actual private key.
 
@@ -113,12 +113,12 @@ If the wallet configuration file exists, you can perform various wallet actions:
 - Check Wallet Balance:
 To check the balance of your Ethereum wallet, use the following command:
 ```bash
-python script.py balance
+python eth.py balance
 ```
 - Send Funds:
 To send funds from your wallet to another address, use the following command:
 ```bash
-python script.py send --symbol ETH --amount 1.0 --address 0x12345 --password <your_password>
+python eth.py send --symbol ETH --amount 1.0 --address 0x12345 --password <your_password>
 
 ```
 Replace <your_password> with your wallet password. This command sends 1.0 ETH to the specified address (0x12345). Adjust the amount and address accordingly.
@@ -127,7 +127,7 @@ Replace <your_password> with your wallet password. This command sends 1.0 ETH to
 - Receive Wallet Address:
 To receive your Ethereum wallet address, use the following command:
 ```bash
-python script.py receive
+python eth.py receive
 ```
 This command provides your wallet address for receiving funds.
 
@@ -135,28 +135,28 @@ This command provides your wallet address for receiving funds.
 If you want to add a custom contract to your wallet, use the following command:
 
 ```bash
-python script.py add-contract --token-address 0x6789...
+python eth.py add-contract --token-address 0x6789...
 ```
 Replace 0x6789... with the actual token address you want to add.
 
 - Create Wallet:
 If you need to create a new Ethereum wallet, use the following command:
 ```bash
-python script.py create --passphrase <your_passphrase> --password <your_password>
+python eth.py create --passphrase <your_passphrase> --password <your_password>
 ```
 This command creates a new wallet, and you'll be prompted to provide a passphrase and password for security.
 
 - Restore Wallet:
 To restore a wallet using a mnemonic (recovery phrase), use the following command:
 ```bash
-python script.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
+python eth.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
 ```
 Replace word1, word2, etc., with your actual mnemonic words.
 
 - Import Wallet:
 To import an existing wallet using its private key, use the following command:
 ```bash
-python script.py import --private-key 0xabcdef... --password <your_password>
+python eth.py import --private-key 0xabcdef... --password <your_password>
 ```
 Replace 0xabcdef... with your actual private key.
 
@@ -164,21 +164,21 @@ Replace 0xabcdef... with your actual private key.
 - Export Wallet Private Key:
 To export the private key of your wallet, use the following command:
 ```bash
-python script.py export --password <your_password>
+python eth.py export --password <your_password>
 ```
 Replace <your_password> with your wallet password.
 
 - Decrypt Wallet:
 To decrypt your wallet and view its details, use the following command:
 ```bash
-python script.py decrypt --password <your_password>
+python eth.py decrypt --password <your_password>
 ```
 Replace <your_password> with your wallet password.
 
 - Erase Wallet 
 To erase the wallet configuration and start fresh, use the following command:Configuration:
 ```bash
-python script.py erase
+python eth.py erase
 ```
 This command resets the wallet configuration and prompts you to set it up again.
 
@@ -191,4 +191,6 @@ This command resets the wallet configuration and prompts you to set it up again.
 **Disclaimer:** Handle private keys, passphrases, and passwords securely. Avoid sharing sensitive information.
 
 **Contributions:** Contributions, issues, and suggestions are welcome. Feel free to open an issue or submit a pull request for improvements or bug fixes.
+
+
 
