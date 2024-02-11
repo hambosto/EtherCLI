@@ -66,7 +66,7 @@ python eth.py --help
 ```
 This will display a list of available commands and their descriptions.
 ```plaintext
-Usage: ether.py [-h] {create,restore,import} ...
+Usage: eth.py [-h] {create,restore,import} ...
 
 Ethereum Virtual Machine Wallet CLI
 
