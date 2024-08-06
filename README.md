@@ -144,7 +144,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-[Insert your chosen license here]
+MIT License
 
 ## Disclaimer
 
