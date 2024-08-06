@@ -11,36 +11,41 @@ A command-line tool for managing your Ethereum wallets, transactions, and more.
 Take control of your digital assets with ease.
 ```
 
-The Ethereum Wallet CLI is a command-line interface for managing Ethereum wallets. It allows users to perform various actions, including creating, restoring, and importing wallets, checking balances, sending transactions, and more.
+Ethereum Wallet CLI is a powerful command-line interface for managing Ethereum wallets. It provides a range of features for interacting with the Ethereum blockchain, including wallet creation, restoration, and management, as well as transaction handling and balance checking.
 
 ## Features
 
-- **Wallet Action:** Check balances, send funds, receive wallet addresses, add contracts, create wallets, restore wallets, import wallets, export private keys, decrypt wallets, and erase wallet configurations.
+- **Wallet Management:** Create, restore, and import wallets
+- **Balance Checking:** View wallet balances in ETH and USD
+- **Transactions:** Send funds to other Ethereum addresses
+- **Contract Interaction:** Add and interact with custom ERC20 tokens
+- **Security:** Encrypted wallet storage with password protection
+- **Private Key Management:** Export and decrypt private keys
+- **Rich Console Output:** Enhanced CLI experience with colored and formatted output
 
-- **Logger Setup:** Configured with the `rich` library for colored and formatted output. Different log levels and traceback features for robust error handling.
+## Prerequisites
 
-- **Rich Console Output:** Enhanced console output using the `rich` library, including banners and formatted tables for displaying wallet balances.
+Before you begin, ensure you have met the following requirements:
 
-- **And More:**
+- Python 3.7 or higher installed
+- Git installed (for cloning the repository)
 
-## Getting Started
+## Installation
 
-### Prerequisites
+1. Clone the repository:
+   ```
+   git clone https://github.com/hambosto/EtherCLI.git
+   cd EtherCLI
+   ```
 
-First of all, clone this project:
-```bash
-git clone https://github.com/hambosto/EtherCLI.git && cd EtherCLI
-```
+2. Install the required packages:
+   ```
+   pip install -r requirements.txt
+   ```
 
-Make sure you have Python installed. You can install the required packages using:
+## Configuration
 
-```bash
-pip install -r requirements.txt
-```
-
-### Provider Configuration
-Before using the Ethereum Wallet CLI, you need to set up the initial configuration in the `wallet/provider.py` file. This file contains essential parameters for interacting with the blockchain node. Open the provider.py file and adjust the following attributes according to your preferences:
-
+Before using the Ethereum Wallet CLI, configure the provider settings in `wallet/provider.py`:
 
 ```python
 DEFAULT_NODE_URL     = "https://rpc.ankr.com/eth" 
@@ -50,147 +55,100 @@ DEFAULT_NODE_NAME    = "Ethereum Main Network"
 DEFAULT_GAS_LIMIT    = 21000
 DEFAULT_CURRENCY     = "USD"
 
-CRYPTOCOMPARE_API_KEY = "PUT YOUR API KEY HERE"
+CRYPTOCOMPARE_API_KEY = "YOUR_API_KEY_HERE"
 ```
 
+Replace `YOUR_API_KEY_HERE` with your actual CryptoCompare API key.
 
 ## Usage
 
 ### Wallet Setup
 
-Before setting up the wallet, you can explore available commands and options using the following command:
+To see available commands and options:
 
-- **Command Help:**
-```bash
+```
 python eth.py --help
 ```
-This will display a list of available commands and their descriptions.
-```plaintext
-Usage: eth.py [-h] {create,restore,import} ...
 
-Ethereum Virtual Machine Wallet CLI
+#### Create a New Wallet
 
-Options:
-  -h, --help            show this help message and exit
-
-Subcommands:
-  Wallet Setup Commands
-
-  {create,restore,import}
-                        Available Actions
-    create              Create a new wallet
-    restore             Restore your wallet from a mnemonic phrase
-    import              Import a wallet from a private key
 ```
-
-
-If the wallet configuration file doesn't exist, use the following commands to set up a wallet:
-
-- **Create a New Wallet:**
-```bash
 python eth.py create --passphrase <your_passphrase> --password <your_password>
 ```
-This command creates a new Ethereum wallet. You'll be prompted to provide a passphrase and password for additional security.
 
-- **Restore Wallet from Mnemonic:**
-```bash
-python eth.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
+#### Restore a Wallet from Mnemonic
 
 ```
-If you have a mnemonic (recovery phrase) for an existing wallet, use this command to restore it. Replace word1, word2, etc., with your actual mnemonic words.
+python eth.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
+```
 
-- **Import Wallet from Private Key:**
-```bash
+#### Import a Wallet from Private Key
+
+```
 python eth.py import --private-key 0xabcdef... --password <your_password>
 ```
-Import an existing wallet using its private key. Replace 0xabcdef... with your actual private key.
 
-Ensure you replace <your_passphrase> and <your_password> with your chosen passphrase and password, respectively.
+### Wallet Actions
 
-## Wallet Actions
-If the wallet configuration file exists, you can perform various wallet actions:
+#### Check Balance
 
-- Check Wallet Balance:
-To check the balance of your Ethereum wallet, use the following command:
-```bash
+```
 python eth.py balance
 ```
-- Send Funds:
-To send funds from your wallet to another address, use the following command:
-```bash
-python eth.py send --symbol ETH --amount 1.0 --address 0x12345 --password <your_password>
+
+#### Send Funds
 
 ```
-Replace <your_password> with your wallet password. This command sends 1.0 ETH to the specified address (0x12345). Adjust the amount and address accordingly.
+python eth.py send --symbol ETH --amount 1.0 --address 0x12345... --password <your_password>
+```
 
+#### Get Wallet Address
 
-- Receive Wallet Address:
-To receive your Ethereum wallet address, use the following command:
-```bash
+```
 python eth.py receive
 ```
-This command provides your wallet address for receiving funds.
 
-- Add Contract:
-If you want to add a custom contract to your wallet, use the following command:
+#### Add Custom Token Contract
 
-```bash
+```
 python eth.py add-contract --token-address 0x6789...
 ```
-Replace 0x6789... with the actual token address you want to add.
 
-- Create Wallet:
-If you need to create a new Ethereum wallet, use the following command:
-```bash
-python eth.py create --passphrase <your_passphrase> --password <your_password>
+#### Export Private Key
+
 ```
-This command creates a new wallet, and you'll be prompted to provide a passphrase and password for security.
-
-- Restore Wallet:
-To restore a wallet using a mnemonic (recovery phrase), use the following command:
-```bash
-python eth.py restore --mnemonic word1 word2 ... --passphrase <your_passphrase> --password <your_password>
-```
-Replace word1, word2, etc., with your actual mnemonic words.
-
-- Import Wallet:
-To import an existing wallet using its private key, use the following command:
-```bash
-python eth.py import --private-key 0xabcdef... --password <your_password>
-```
-Replace 0xabcdef... with your actual private key.
-
-
-- Export Wallet Private Key:
-To export the private key of your wallet, use the following command:
-```bash
 python eth.py export --password <your_password>
 ```
-Replace <your_password> with your wallet password.
 
-- Decrypt Wallet:
-To decrypt your wallet and view its details, use the following command:
-```bash
+#### Decrypt Wallet
+
+```
 python eth.py decrypt --password <your_password>
 ```
-Replace <your_password> with your wallet password.
 
-- Erase Wallet 
-To erase the wallet configuration and start fresh, use the following command:Configuration:
-```bash
+#### Erase Wallet Configuration
+
+```
 python eth.py erase
 ```
-This command resets the wallet configuration and prompts you to set it up again.
 
-## Additional Notes
+## Security
 
-- The script utilizes a configuration file, and sensitive information like private keys should be safeguarded with passwords.
+- Always keep your passphrases, passwords, and private keys secure.
+- Never share sensitive information.
+- Use strong, unique passwords for each wallet.
 
-- A CryptoCompare API key is used to fetch currency prices.
+## Contributing
 
-**Disclaimer:** Handle private keys, passphrases, and passwords securely. Avoid sharing sensitive information.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-**Contributions:** Contributions, issues, and suggestions are welcome. Feel free to open an issue or submit a pull request for improvements or bug fixes.
+## License
+
+[Insert your chosen license here]
+
+## Disclaimer
+
+This tool is for educational and developmental purposes only. Use at your own risk. The authors are not responsible for any loss of funds or other damages that may occur through the use of this software.
 
 
 ## Star History
